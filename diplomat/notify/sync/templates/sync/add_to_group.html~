@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+{% for key, message in addtogroupform.errors.items %}
+	<p>{{ message }}</p>
+{% endfor %}
+
+{{ addtogroupform.errors }}
+
+<p><b>Groups to add:</b></p>
+<form action="" method="post">
+	{% for group in user.groups.all %}
+		<p>{{ group.name }} <input type="checkbox" name="check{{ group.id }}" value="{{ group.id }}"></p>
+	{% endfor %}
+	
+	{{ addtogroupform.user_list }}
+	
+	{% csrf_token %} 
+	<button type="submit">Invite</button>
+</form>
+
+</body>
+
+</html>

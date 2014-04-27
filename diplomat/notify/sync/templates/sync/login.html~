@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>  
+
+{% if loginform.errors %}
+  <p>Sorry, that's not a valid username or password</p>
+{% endif %}
+
+<form action="" method="post"> 
+    <p>Username: {{ loginform.username }}</p>
+    <p>Password: {{ loginform.password }}</p>
+	
+	{% csrf_token %}
+    <button type="submit" name="login">Login</button>
+</form>
+
+
+</body>
+
+</html>

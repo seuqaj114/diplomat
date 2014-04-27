@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  
+{% if registerform.errors %}
+  <p>Sorry, that username is already taken</p>
+{% endif %}
+
+<form action="" method="post"> 
+    <p>Username: {{ registerform.username }}</p>
+    <p>Password: {{ registerform.password }}</p>
+	
+	{% csrf_token %}
+    <button type="submit" name="login">Register</button>
+</form>
+  
+</body>
+
+</html>

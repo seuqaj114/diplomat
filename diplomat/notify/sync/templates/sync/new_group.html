@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  
+{% if newgroupform.errors %}
+  <p>Sorry, you already have a group with that name</p>
+{% endif %}
+
+<form action="" method="post"> 
+    <p>Name: {{ newgroupform.name }}</p>
+	{% csrf_token %}
+    <button type="submit" name="create">Create</button>
+</form>
+  
+</body>
+
+</html>

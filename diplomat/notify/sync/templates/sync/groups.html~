@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load my_tags %}
+
+<html lang="en">
+
+<body>
+
+<h3>Welcome {{ user.username }}!</h3>
+
+{% if user.invitation_set.all %}
+<p><b>You got {{ user.invitation_set.all|length }} invitations: </b></p>
+	{% for invitation in user.invitation_set.all %}
+		<p>
+		<form action="{% url 'home:accept_invitation' invitation.id %}">
+			Group: {% get_group_from_id invitation.group_id %} -- 
+			Invited by: {% get_user_from_id invitation.sender_id %}
+			<button type="submit">Accept</button>
+		</form>
+		</p>
+	{% endfor %}
+{% endif %}
+
+<p><b>Groups:</b></p>
+
+{% if user.groups.all %}
+	{% for group in user.groups.all %}
+	<p> {{ group.name }} </p>
+	{% endfor %}
+{% else %}
+	<p>You have no groups yet!</p>
+{% endif %}
+
+<P>
+<form action="{% url 'home:new_group' %}">
+	<button type="submit">New Group</button>
+</form>
+</p>
+
+<P>
+<form action="{% url 'home:add_to_group' %}">
+	<button type="submit">Add to Group</button>
+</form>
+</p>
+
+<P>
+<form action="{% url 'home:profile' %}">
+	<button type="submit">My Profile</button>
+</form>
+</p>
+
+<p>
+<form action="{% url 'home:logout' %}">
+	<button type="submit">Logout</button>
+</form>
+</p>
+
+</body>
+</html>

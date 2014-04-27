@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+<h3>Welcome {{ user.username }}!</h3>
+
+<p><b>Files being used:</b></p>
+
+{% for open in user.open_set.all %}
+	<p> {{ open.name }} - {{ open.open_date|date:'H:i d/m/Y'}} </p>
+{% endfor %}
+
+<P>
+<form action="{% url 'home:groups' %}">
+	<button type="submit">My Groups ({{ user.invitation_set.all|length }})</button>
+</form>
+</p>
+
+<p>
+<form action="{% url 'home:logout' %}">
+	<button type="submit">Logout</button>
+</form>
+</p>
+
+</body>
+</html>

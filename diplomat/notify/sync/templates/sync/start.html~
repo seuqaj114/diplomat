@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+You've reached the most awsome Dropbox feature's website!
+
+<form action="{% url 'home:login' %}">
+	<button type="submit">Login</button>
+	
+</form>
+
+</body>
+</html>
